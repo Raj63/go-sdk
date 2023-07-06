@@ -49,7 +49,7 @@ func NewMigrate(config *Config, embedFS embed.FS) (*Migrate, error) {
 	md.embedFS = embedFS
 	source.Register("embed", &md)
 
-	m, err := migrate.New("embed://", fmt.Sprintf("%s://%s", config.DriverName, config.URI))
+	m, err := migrate.New("embed://", config.URI) // fmt.Sprintf("%s://%s", config.DriverName, config.URI)
 	if err != nil {
 		return nil, err
 	}
